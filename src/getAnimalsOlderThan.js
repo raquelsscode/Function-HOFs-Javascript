@@ -1,14 +1,14 @@
-const data = require('../data/zoo_data');
+const data = require("../data/zoo_data");
 
 function getAnimalsOlderThan(animal, age) {
-    const animals = data.species
-        .filter((elements) => elements.name === animal)
-        .map((eleme) => eleme.residents)
-        .find((banana) => banana)
-        .every((bolo) => bolo.age > age);
-    return animals;
+  const animals = data.species
+    .filter((elementfilter) => elementfilter.name === animal)
+    .map((elementmap) => elementmap.residents)
+    .find((elementfind) => elementfind)
+    .every((elementevery) => elementevery.age > age);
+  return animals;
 }
 
-console.log(getAnimalsOlderThan('penguins', 10));
+console.log(getAnimalsOlderThan("penguins", 10));
 
 module.exports = getAnimalsOlderThan;
