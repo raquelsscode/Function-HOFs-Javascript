@@ -6,7 +6,7 @@ function getEmployeeByName(employeeName) {
   }
   const employee = data.employees.find(
     (element) =>
-      element.firstName === employeeName || element.lastName === employeeName
+      element.firstName === employeeName || element.lastName === employeeName,
   );
   return employee;
 }
