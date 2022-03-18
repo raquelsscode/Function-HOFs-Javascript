@@ -1,18 +1,7 @@
 const data = require('../data/zoo_data');
 
-const infos = [
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-];
 function countEntrants(entrants) {
-  if (Object.keys(entrants) === 0) {
-    return true;
-  }
-  if (entrants === undefined) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
   const crianca = entrants.filter((item) => item.age < 18);
@@ -25,11 +14,10 @@ function countEntrants(entrants) {
   };
   return object;
 }
-console.log(countEntrants({}));
+countEntrants();
 
-function calculateEntry(entrants) {
-  const teste = entrants.map((element) => element.age);
-  const teste2 = teste.map((element) => {
+function validatePrice(entrants) {
+  return entrants.map((element) => {
     if (element >= 18 && element < 50) {
       return data.prices.adult;
     } if (element >= 50) {
@@ -39,10 +27,18 @@ function calculateEntry(entrants) {
     }
     return element;
   });
-  const sum = teste2.reduce((acc, curr) => acc + curr, 0);
-  return sum;
 }
 
-console.log(calculateEntry([{ name: 'Carlos Nogueira', age: 50 }]));
+function calculateEntry(entrants) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const teste = entrants.map((element) => element.age);
+  const teste2 = validatePrice(teste);
+  const sum = teste2.reduce((acc, curr) => acc + curr, 0);
+  return parseFloat(sum.toFixed(2));
+}
+
+console.log(calculateEntry({}));
 
 module.exports = { calculateEntry, countEntrants };
