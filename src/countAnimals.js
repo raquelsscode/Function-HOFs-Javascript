@@ -20,9 +20,9 @@ function numberForAnimals(animal) {
 numberForAnimals({ specie: 'giraffes' });
 
 function numberSexAndSpecies(animal) {
-  const animalssex = data.species.find((item) => item.name === animal.specie).residents;
-  const banana = animalssex.filter((item1) => item1.sex === animal.sex).length;
-  return banana;
+  const animalspecie = data.species.find((item) => item.name === animal.specie).residents;
+  const animalsex = animalspecie.filter((item1) => item1.sex === animal.sex).length;
+  return animalsex;
 }
 (numberSexAndSpecies({ specie: 'elephants', sex: 'male' }));
 
