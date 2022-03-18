@@ -16,27 +16,16 @@ function countEntrants(entrants) {
 }
 countEntrants();
 
-function validatePrice(entrants) {
-  return entrants.map((element) => {
-    if (element >= 18 && element < 50) {
-      return data.prices.adult;
-    } if (element >= 50) {
-      return data.prices.senior;
-    } if (element <= 5) {
-      return data.prices.child;
-    }
-    return element;
-  });
-}
-
 function calculateEntry(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-  const teste = entrants.map((element) => element.age);
-  const teste2 = validatePrice(teste);
-  const sum = teste2.reduce((acc, curr) => acc + curr, 0);
-  return parseFloat(sum.toFixed(2));
+  const peoples = countEntrants(entrants);
+  const child = peoples.child * data.prices.child;
+  const adult = peoples.adult * data.prices.adult;
+  const senior = peoples.senior * data.prices.senior;
+  const result = child + adult + senior;
+  return result;
 }
 
 console.log(calculateEntry({}));
