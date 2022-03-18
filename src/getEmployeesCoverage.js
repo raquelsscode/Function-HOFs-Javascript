@@ -3,8 +3,6 @@ const data = require('../data/zoo_data');
 const { species } = data;
 const { employees } = data;
 
-
-
 function coverage(e) {
   const object = {};
   const allEmployees = employees
